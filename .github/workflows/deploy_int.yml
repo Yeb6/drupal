@@ -1,0 +1,28 @@
+name: Deployment (INT)
+
+on:
+  workflow_dispatch:
+    branches: [ "main" ]
+
+env:               
+  IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  codeql-scan:
+    name: CodeQL Scan (Drupal Custom Code)
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+          queries: security-and-quality
+          config-file: .github/codeql/codeql-config.yml
