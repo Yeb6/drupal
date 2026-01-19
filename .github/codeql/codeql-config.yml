@@ -1,0 +1,17 @@
+name: "Drupal Custom Code Scan"
+
+paths:
+  - core/assets/scaffold
+  # - web/sites
+  # - web/themes/custom/fs_theme
+
+# Optional but recommended – explicitly exclude vendor / core noise
+paths-ignore:
+  - composer
+  # - node_modules
+  # - web/core
+  # - web/modules/contrib
+  # - web/themes/contrib
+  # - deployment
+  # - config
+  # - drush
